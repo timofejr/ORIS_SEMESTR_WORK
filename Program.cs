@@ -21,9 +21,9 @@ try
 
     while (true)
     {
-        // var input = await Task.Run(Console.ReadLine);
-        // if (input.ToLower().Equals("/stop"))
-        //     break;
+        var input = await Task.Run(Console.ReadLine);
+        if (input.ToLower().Equals("/stop"))
+            break;
     }
     
     GlobalContext.Server.Stop();

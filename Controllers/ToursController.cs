@@ -60,8 +60,23 @@ public class ToursController: BaseController
     public IResponseResult GetHotel(string hotelId)
     {
         if (!int.TryParse(hotelId, out _))
-            return Json("Invalid hotel ID", HttpStatusCode.BadRequest);
+            return Page("404.html");
+
+        var hotelService = new HotelService();
+        var roomService = new RoomsService();
+
+        var hotel = hotelService.GetHotelById(int.Parse(hotelId));
+        var rooms = roomService.GetRoomsByHotelId(int.Parse(hotelId)).ToList();
+
+        var data = new
+        {
+            Hotel = hotel,
+            Rooms = new
+            {
+                Items = rooms
+            }
+        };
         
-        return Page("/tours/hotel.html");
+        return Page("/tours/hotel.html", data);
     }
 }

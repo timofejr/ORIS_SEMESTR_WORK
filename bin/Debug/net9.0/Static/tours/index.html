@@ -9,7 +9,7 @@
 <body>
     <div class="header">
         <div class="container">
-            <form class="header__form" action="">
+            <div class="header__form" action="">
                 <div class="header__field header__field--city">
                     <label class="header__label label" for="resort" >Курорт</label>
                     <input class="header__input input" id="resort" name="resort" type="text" placeholder="Сейшеллы">
@@ -43,7 +43,7 @@
                 <div class="header__field header__field--price">
                     <button type="button" id="getHotels" class="header__button">Узнать цены</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -53,8 +53,9 @@
             <div class="main__sidebar" id="filters">
                 <div class="main__sidebar__section main__sidebar__section--sort">
                     <h3 class="main__sidebar__title">Сортировка</h3>
-                    <select class="main__sidebar__select">
-                        <option value="popular">По популярности</option>
+                    <select id="sort" class="main__sidebar__select">
+                        <option value="price_desc">Дорогие</option>
+                        <option value="price_inc">Дешевые</option>
                     </select>
                 </div>
 
@@ -283,52 +284,9 @@
             </div>
             <div class="main__content" id="cards-container">
                 <div class="main__content__info">
-                    <h3 class="main__content__title">Маврикий: </h3>
-                    <span class="main__content__text">221 предложение. Показано 1–10.</span>
+                    <h3 class="main__content__title">Предложений:</h3>
+                    <span id="tours_amount" class="main__content__text">0</span>
                 </div>
-
-<!--                <div class="main__content__product-card">-->
-<!--                    <img class="main__content__product-card__left-side" src="src/img/product-card.webp"></img>-->
-<!--                    <div class="main__content__product-card__right-side">-->
-<!--                        <div class="main__content__product-card__location">-->
-<!--                            <img class="main__content__product-card__location__image" src="src/img/location.png">-->
-<!--                            <p class="main__content__product-card__location__text">Таиланд, о. Пхукет (Phuket), пляж Раваи (Rawai Beach)</p>-->
-<!--                        </div>-->
-<!--                        <h3 class="main__content__product-card__hotel-name">LAYA RESORT PHUKET ISLAND</h3>-->
-<!--                        <div class="main__content__product-card__hotel-five-stars">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="main__content__product-card__hotel-four-stars" style="display: none;">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="main__content__product-card__hotel-three-stars" style="display: none;">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="main__content__product-card__hotel-two-stars" style="display: none;">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
-<!--                        </div>-->
-<!--                        <h3 class="main__content__product-card__category" style="display: none;">Apart</h3>-->
-<!--                        <h3 class="main__content__product-card__hotel-total-price">от 347 000 ₽</h3>-->
-<!--                        <p class="main__content__product-card__hotel-total-price-text">Цена за 7 ночей</p>-->
-<!--                        <button class="main__content__product-card__book">Выбрать</button>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>

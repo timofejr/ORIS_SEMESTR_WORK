@@ -1,3 +1,5 @@
+let hotels = null;
+
 document.addEventListener('DOMContentLoaded', function() {
     const checkinInput = document.querySelector('.header__input--checkin');
     
@@ -129,6 +131,8 @@ async function getHotelsByResort() {
     const services = [...servicesDiv
         .querySelectorAll('input[type="checkbox"]:checked')]
         .map(cb => cb.value);
+    
+    const sortSelectValue = document.getElementById('sort').value;
 
 
     console.log(resortName);
@@ -149,6 +153,7 @@ async function getHotelsByResort() {
         Conceptions: conceptions,
         BeachDistances: beachDistances,
         Services: services,
+        Sort: sortSelectValue,
         HotelServices: []
     };
     console.log(dataToSend)
@@ -167,11 +172,21 @@ async function getHotelsByResort() {
             throw new Error(`HTTP-ошибка: Статус ${response.status}`);
         }
 
-        const hotels = await response.json();
+        hotels = await response.json();
         
         let allCards = '';
         
         let category = '';
+
+        const toursAmount = hotels.length;
+
+        allCards += `
+                <div class="main__content__info">
+                    <h3 class="main__content__title">Предложений:</h3>
+                    <span id="tours_amount" class="main__content__text">${ toursAmount }</span>
+                </div>
+        `;
+        
         
         hotels.forEach(hotel => {
             if (hotel.Category == "5 звезд"){
@@ -223,7 +238,7 @@ async function getHotelsByResort() {
                         ${category}
                         <h3 class="main__content__product-card__hotel-total-price">${parseInt(hotel.Price)}₽</h3>
                         <p class="main__content__product-card__hotel-total-price-text">Цена за ${diffDays} ночей</p>
-                        <button class="main__content__product-card__book">Выбрать</button>
+                        <button data-id="${hotel.HotelId}" class="main__content__product-card__book">Выбрать</button>
                     </div>
                 </div>
            `; 
@@ -231,6 +246,24 @@ async function getHotelsByResort() {
         });
         
         cardsContainer.innerHTML = allCards;
+
+        document.querySelectorAll('.main__content__product-card__book').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+
+                const resort = document.getElementById('resort').value;
+                const checkin = document.getElementById('checkin').value;
+                const checkout = document.getElementById('checkout').value;
+                const guests = document.getElementById('guests').value;
+
+                const url = `/${id}?&resort=${encodeURIComponent(resort)}`
+                    + `&checkin=${checkin}`
+                    + `&checkout=${checkout}`
+                    + `&guests=${guests}`;
+
+                window.open(url, '_blank');
+            });
+        });
 
         console.log('Ответ сервера:', hotels);
 

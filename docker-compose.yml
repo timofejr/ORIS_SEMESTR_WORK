@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    stdin_open: true 
+    tty: true         
     ports:
       - "0.0.0.0:54321:54321"
     container_name: my-app-container

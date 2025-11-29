@@ -23,6 +23,7 @@ public class HotelService
             hotels = hotels.Where(hotel => data.RoomTypes.Contains(hotel.RoomType));
         if (data.BeachDistances.Any())
             hotels = hotels.Where(hotel => data.BeachDistances.Contains("Любое") || data.BeachDistances.Contains(hotel.BeachDistance.ToString()));
+        hotels = data.Sort == "price_desc" ? hotels.OrderByDescending(hotel => hotel.Price) : hotels.OrderBy(hotel => hotel.Price);
         hotels = hotels.Where(hotel => data.PriceFrom <= hotel.Price * data.DaysAmount && data.PriceTo >= hotel.Price * data.DaysAmount);
         
         foreach (var hotel in hotels)
@@ -31,5 +32,14 @@ public class HotelService
         }
         
         return  hotels;
+    }
+
+    public Hotel GetHotelById(int hotelId)
+    {
+        var hotel = _orm.FirstOrDefault<Hotel>(hotel => hotel.HotelId == hotelId);
+        
+        hotel.PhotoPath = _orm.FirstOrDefault<HotelPhoto> (photo => photo.HotelId == hotel.HotelId).FilePath;
+
+        return hotel;
     }
 }

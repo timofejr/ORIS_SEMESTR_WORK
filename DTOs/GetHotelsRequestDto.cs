@@ -14,4 +14,5 @@ public class GetHotelsRequestDto
     public List<string> BeachTypes { get; set; }
     public List<string> RoomTypes { get; set; }
     public List<string> HotelServices { get; set; }
+    public string Sort { get; set; }
 }

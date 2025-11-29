@@ -1832,3 +1832,5 @@
 /home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/obj/Debug/net9.0/ref/MiniHttpServer.dll
 /home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/bin/Debug/net9.0/Static/tours/hotel.html
 /home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/bin/Debug/net9.0/Static/tours/src/css/hotel.css
+/home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/obj/Debug/net9.0/MiniHttpServer.sourcelink.json
+/home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/bin/Debug/net9.0/Static/tours/src/js/hotel.js

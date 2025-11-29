@@ -50,36 +50,81 @@
 <div class="main">
     <div class="container">
         <div class="main__content__product-card">
-            <img class="main__content__product-card__left-side" src="https://attaches.1001tur.ru/hotels/gallery/452/17395188427228.jpg">
+            <img class="main__content__product-card__left-side" src="$( hotel.photopath )">
             <div class="main__content__product-card__right-side">
                 <div class="main__content__product-card__location">
                     <img class="main__content__product-card__location__image" src="src/img/location.png">
-                    <p class="main__content__product-card__location__text">Таиланд, о. Пхукет (Phuket), пляж Раваи (Rawai Beach)</p>
+                    <p class="main__content__product-card__location__text">$( hotel.location )</p>
                 </div>
-                <h3 class="main__content__product-card__hotel-name">LAYA RESORT PHUKET ISLAND</h3>
+                <h3 class="main__content__product-card__hotel-name">$( hotel.name )</h3>
 
-                <div class="main__content__product-card__hotel-five-stars">
-                    <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
-                    <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
-                    <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
-                    <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
-                    <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
-                </div>
-                <p class="main__content__product-card__description">Следовательно сустав командир страсть. Природа тесно светило пространство рот подробность. Приличный число ученый мягкий передо зеленый выражение район. Естественный заведение рота войти. Расположен в Ла-Диг, Сейшелы, в 500 метрах от галечный пляж. Категория: 5 звезд. Идеально для элит сервис. Питание: без питания. Услуги: Хамам, Wi-Fi, Казино, Сейф. Отель #1 на Сейшелы.</p>
+                $if(hotel.category == "5 звезд")
+                    <div class="main__content__product-card__hotel-five-stars">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                    </div>
+                $endif
+
+                $if(hotel.category == "4 звезды")
+                    <div class="main__content__product-card__hotel-five-stars">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                    </div>
+                $endif
+
+                $if(hotel.category == "3 звезды")
+                    <div class="main__content__product-card__hotel-five-stars">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                    </div>
+                $endif
+
+                $if(hotel.category == "2 звезды")
+                    <div class="main__content__product-card__hotel-five-stars">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                        <img class="main__content__product-card__star" src="src/img/star.svg" alt="">
+                    </div>
+                $endif
+
+                $if(hotel.category == "Apart")
+                    <h3 class="main__content__product-card__category">Apart</h3>
+                $endif
+
+                $if(hotel.category == "Special")
+                    <h3 class="main__content__product-card__category">Special</h3>
+                $endif
+                
+                $if(hotel.category == "Boutique")
+                    <h3 class="main__content__product-card__category">Boutique</h3>
+                $endif
+                
+                <p class="main__content__product-card__description">$( hotel.description )</p>
             </div>
         </div>
         <h1 class="main__content__title">Доступные номера:</h1>
 
-        <div class="main__content__room-card">
-            <img class="main__content__room-card__left-side" src="https://content.coral.ru/resize/576x522/media/image/31/63734/638749653691094413.jpg">
-            <div class="main__content__room-card__right-side">
-                <h3 class="main__content__room-card__hotel-name">Юный запеть палка бак спасть. Функция термин степь. Вилла с видом на галечный пляж. Оснащение: Wi-Fi, СПА. Номер #1.</h3>
-                <h3 class="main__content__product-card__hotel-total-price">113006 ₽</h3>
-                <p class="main__content__product-card__hotel-total-price-text">Цена за 7 ночей</p>
-                <button class="main__content__product-card__book">Бронировать</button>
+        $foreach(var room in rooms.Items)
+            <div class="main__content__room-card">
+                <img class="main__content__room-card__left-side" src="$( room.photopath )">
+                <div class="main__content__room-card__right-side">
+                    <h3 class="main__content__room-card__hotel-name">$( room.description )</h3>
+                    <h3 class="main__content__product-card__hotel-total-price">$( room.pricepernight )</h3>
+                    <p class="main__content__product-card__hotel-total-price-text"></p>
+                    <button class="main__content__product-card__book">Бронировать</button>
+                </div>
             </div>
-        </div>
+        $endfor
+        
+
     </div>
 </div>
+<script src="src/js/hotel.js"></script>
 </body>
 </html>
