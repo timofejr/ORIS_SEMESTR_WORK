@@ -1,0 +1,64 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "0.0.0.0:54321:54321"
+    container_name: my-app-container
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionString=Host=postgres;Port=5432;Database=oris_database;Username=oris_user;Password=11408;
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+      
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      - POSTGRES_USER=oris_user
+      - POSTGRES_PASSWORD=11408
+      - POSTGRES_DB=oris_database
+    ports:
+      - "0.0.0.0:5433:5432"
+    volumes:
+      - ./db/init_tables.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+    
+    stdin_open: true 
+    tty: true
+    
+  data-loader:
+    image: python:3.12
+    container_name: data-loader
+    depends_on:
+      - postgres
+    volumes:
+      - ./db:/app
+    working_dir: /app
+    command: >
+      sh -c "
+        pip3 install --no-cache-dir -r requirements.txt &&
+        echo '⏳ Ожидание PostgreSQL...' &&
+        sleep 5 &&
+        python3 fill_data_script.py
+      "
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=oris_database
+      - DB_USER=oris_user
+      - DB_PASSWORD=11408
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

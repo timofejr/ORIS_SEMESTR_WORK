@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "FcJy6z4DHmw=",
+  "success": true,
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/MiniHttpServer.csproj",
+  "expectedPackageFiles": [
+    "/home/timofejr/.nuget/packages/htmlagilitypack/1.12.4/htmlagilitypack.1.12.4.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/mstest.analyzers/4.0.1/mstest.analyzers.4.0.1.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/mstest.testframework/4.0.1/mstest.testframework.4.0.1.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/npgsql/9.0.4/npgsql.9.0.4.nupkg.sha512",
+    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "StaticFilesPath": "Static/",
+  "Domain": "localhost",
+  "Port": "54321",
+  "EmailAddressFrom" : "example@gmail.com",
+  "EmailNameFrom" : "Example Example",
+  "SmtpPort" : 587,
+  "SmtpHost" : "smtp.gmail.com",
+  "SmtpPassword" : "example"
+}

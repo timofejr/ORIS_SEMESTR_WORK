@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Карточки</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .card {
+            background: white;
+            flex: 0 0 30%;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 250px;
+            transition: transform 0.2s;
+        }
+        
+    </style>
+</head>
+<body>
+<h1>Мои карточки</h1>
+
+
+<div class="cards">
+    $foreach(var product in products.Items)
+
+    <div class="card">
+        <h3>$(product.Text)</h3>
+        <img src="$(product.Link)" alt="">
+        <p>$(product.Price)</p>
+        <button>Купить</button>
+    </div>
+    $endfor
+
+</div>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/index.css">
+    <title>Отели</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <form class="header__form" action="">
+                <div class="header__field header__field--city">
+                    <label class="header__label label" for="resort" >Курорт</label>
+                    <input class="header__input input" id="resort" name="resort" type="text" placeholder="Сейшеллы">
+                    <div class="header__input__image"></div>
+                </div>
+
+                <div class="header__field header__field--dates">
+                    <div class="header__field__inner">
+                        <label class="header__label label" for="checkin" >Прибытие</label>
+                        <input class="header__input header__input--checkin input" id="checkin" name="checkin" type="date">
+                        <div class="header__input__image"></div>
+                    </div>
+
+                    <div class="header__field__inner">
+                        <label class="header__label label" for="checkout" >Выезд</label>
+                        <input class="header__input header__input--checkout input" id="checkout" name="checkout" type="date">
+                        <div class="header__input__image"></div>
+                    </div>
+                </div>
+
+                <div class="header__field header__field--guests">
+                    <label class="header__label label" for="guests" >Гости</label>
+                    <select class="header__select" name="guests" id="guests" >
+                        <option value="1">1 гость</option>
+                        <option value="2">2 гостя</option>
+                        <option value="3">3 гостя</option>
+                        <option value="4">4 гостя</option>
+                    </select>
+                </div>
+
+                <div class="header__field header__field--price">
+                    <button type="button" id="getHotels" class="header__button">Узнать цены</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="main">
+        <div class="container">
+            <div class="main__sidebar" id="filters">
+                <div class="main__sidebar__section main__sidebar__section--sort">
+                    <h3 class="main__sidebar__title">Сортировка</h3>
+                    <select class="main__sidebar__select">
+                        <option value="popular">По популярности</option>
+                    </select>
+                </div>
+
+                <div class="main__sidebar__section main__sidebar__section--category" id="category">
+                    <h3 class="main__sidebar__title">Категория</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--five-star" value="5 звезд" type="checkbox" name="five-star">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--four-star" value="4 звезды" type="checkbox" name="four-star">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--three-star" value="3 звезды" type="checkbox" name="three-star">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--two-star" value="2 звезды" type="checkbox" name="two-star">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                        <img class="main__sidebar__input__star" src="src/img/star.svg" alt="">
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--apart" value="Apart" type="checkbox" name="apart">
+                        <label class="main__sidebar__input__label">Apart</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--special" value="Special" type="checkbox" name="special">
+                        <label class="main__sidebar__input__label">Special</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--guest-house" value="Guest-house" type="checkbox" name="guest-house">
+                        <label class="main__sidebar__input__label">Guest-house</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--boutique" value="Boutique" type="checkbox" name="boutique">
+                        <label class="main__sidebar__input__label">Boutique</label>
+                    </div>
+                </div>
+                
+                <div class="main__sidebar__section main__sidebar__section--food-type" id="food_type">
+                    <h3 class="main__sidebar__title">Тип питания</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--all-in" value="Все включено" type="checkbox" name="all-in">
+                        <label class="main__sidebar__input__label">Все включено</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--full-pansion" value="Полный пансион" type="checkbox" name="full-pansion">
+                        <label class="main__sidebar__input__label">Полный пансион</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--semi-pansion" value="Полупансион" type="checkbox" name="semi-pansion">
+                        <label class="main__sidebar__input__label">Полупансион</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--breakfast" value="Завтрак" type="checkbox" name="breakfast">
+                        <label class="main__sidebar__input__label">Завтрак</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--no-food" value="Без питания" type="checkbox" name=no-food">
+                        <label class="main__sidebar__input__label">Без питания</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--special-food" value="Особые типы питания" type="checkbox" name=special-food">
+                        <label class="main__sidebar__input__label">Особые типы питания</label>
+                    </div>
+                </div>
+
+                <div class="main__sidebar__section main__sidebar__section--hotel-conception" id="conception">
+                    <h3 class="main__sidebar__title">Концепция отеля</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--recommended" value="Рекомендуемые отели" type="checkbox" name="recommended">
+                        <label class="main__sidebar__input__label">Рекомендуемые отели</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--full-spa" value="SPA" type="checkbox" name="spa">
+                        <label class="main__sidebar__input__label">SPA</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--family" value="Семейный отдых" type="checkbox" name="family">
+                        <label class="main__sidebar__input__label">Семейный отдых</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--economical" value="Экономичный" type="checkbox" name="economical">
+                        <label class="main__sidebar__input__label">Экономичный</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--elit" value="Элит сервис" type="checkbox" name=elit">
+                        <label class="main__sidebar__input__label">Элит сервис</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--deluxe" value="Отели делюкс" type="checkbox" name=deluxe">
+                        <label class="main__sidebar__input__label">Отели делюкс</label>
+                    </div>
+                </div>
+                
+                <div class="main__sidebar__section main__sidebar__section--hotel-price">
+                    <h3 class="main__sidebar__title">Цена</h3>
+
+                    <div class="slider">
+                        <div class="slider__track"></div>
+                        <div class="slider__range" id="slider-range"></div>
+                        <input type="range" id="rangeMin" min="0" max="2000000" value="0">
+                        <input type="range" id="rangeMax" min="0" max="2000000" value="2000000">
+                    </div>
+
+                    <div class="values">
+                        <span id="minValue">20</span> 
+                        <span id="maxValue">80</span>
+                    </div>
+                </div>
+
+                <div class="main__sidebar__section main__sidebar__section--beach-distance" id="beach_distance">
+                    <h3 class="main__sidebar__title">Расстояние до пляжа (м)</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--any" value="1000000" type="checkbox" name="any">
+                        <label class="main__sidebar__input__label">Любое</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--upto50" value="50" type="checkbox" name="upto50">
+                        <label class="main__sidebar__input__label">До 50м</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--upto250" value="250" type="checkbox" name="upto250">
+                        <label class="main__sidebar__input__label">До 250м</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--upto500" value="500" type="checkbox" name="upto500">
+                        <label class="main__sidebar__input__label">До 500м</label>
+                    </div>
+                </div>
+
+                <div class="main__sidebar__section main__sidebar__section--beach-type" id="beach_type">
+                    <h3 class="main__sidebar__title">Тип пляжа</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--pebble" value="Галечный пляж" type="checkbox" name="pebble">
+                        <label class="main__sidebar__input__label">Галечный пляж</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--sandy" value="Песчаный пляж" type="checkbox" name="sandy">
+                        <label class="main__sidebar__input__label">Песчаный пляж</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--sandy-and-pebble" value="Песчано-галечный пляж" type="checkbox" name="sandy-and-pebble">
+                        <label class="main__sidebar__input__label">Песчано-галечный пляж</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--rocky" value="Каменистый пляж" type="checkbox" name="rocky">
+                        <label class="main__sidebar__input__label">Каменистый пляж</label>
+                    </div>
+                </div>
+                
+                <div class="main__sidebar__section main__sidebar__section--room-type" id="room_type">
+                    <h3 class="main__sidebar__title">Тип номера</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--standard-room" value="Стандартный" type="checkbox" name="standard-room">
+                        <label class="main__sidebar__input__label">Стандартный</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--family-room" value="Комната для семьи" type="checkbox" name="family-room">
+                        <label class="main__sidebar__input__label">Комната для семьи</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--large-suit" value="Просторный люкс" type="checkbox" name="large-suit">
+                        <label class="main__sidebar__input__label">Просторный люкс</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--villa" value="Вилла" type="checkbox" name="villa">
+                        <label class="main__sidebar__input__label">Вилла</label>
+                    </div>
+                </div>
+
+                <div class="main__sidebar__section main__sidebar__section--services" id="services">
+                    <h3 class="main__sidebar__title">Услуги отеля</h3>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--wifi" value="Wi-Fi" type="checkbox" name="wifi">
+                        <label class="main__sidebar__input__label">Wi-Fi</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--disco" value="Дискотека" type="checkbox" name="disco">
+                        <label class="main__sidebar__input__label">Дискотека</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--large-spa-service" value="СПА" type="checkbox" name="spa-service">
+                        <label class="main__sidebar__input__label">СПА</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--massage" value="Массаж" type="checkbox" name="massage">
+                        <label class="main__sidebar__input__label">Массаж</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--hamam" value="Хамам" type="checkbox" name="hamam">
+                        <label class="main__sidebar__input__label">Хамам</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--sauna" value="Сауна" type="checkbox" name="sauna">
+                        <label class="main__sidebar__input__label">Сауна</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--doctor" value="Доктор" type="checkbox" name="doctor">
+                        <label class="main__sidebar__input__label">Доктор</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--safe" value="Сейф" type="checkbox" name="safe">
+                        <label class="main__sidebar__input__label">Сейф</label>
+                    </div>
+                    <div class="main__sidebar__input">
+                        <input class="main__sidebar__checkbox main__sidebar__checkbox--casino" value="Казино" type="checkbox" name="casino">
+                        <label class="main__sidebar__input__label">Казино</label>
+                    </div>
+                </div>
+
+                <div class="main__sidebar__footer">
+                    <button class="main__sidebar__button main__sidebar__button--reset" id="reset_filters">Сбросить фильтры</button>
+                    <button class="main__sidebar__button main__sidebar__button--apply" id="apply_filters">Применить фильтры</button>
+                </div>
+            </div>
+            <div class="main__content" id="cards-container">
+                <div class="main__content__info">
+                    <h3 class="main__content__title">Маврикий: </h3>
+                    <span class="main__content__text">221 предложение. Показано 1–10.</span>
+                </div>
+
+<!--                <div class="main__content__product-card">-->
+<!--                    <img class="main__content__product-card__left-side" src="src/img/product-card.webp"></img>-->
+<!--                    <div class="main__content__product-card__right-side">-->
+<!--                        <div class="main__content__product-card__location">-->
+<!--                            <img class="main__content__product-card__location__image" src="src/img/location.png">-->
+<!--                            <p class="main__content__product-card__location__text">Таиланд, о. Пхукет (Phuket), пляж Раваи (Rawai Beach)</p>-->
+<!--                        </div>-->
+<!--                        <h3 class="main__content__product-card__hotel-name">LAYA RESORT PHUKET ISLAND</h3>-->
+<!--                        <div class="main__content__product-card__hotel-five-stars">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="main__content__product-card__hotel-four-stars" style="display: none;">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="main__content__product-card__hotel-three-stars" style="display: none;">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="main__content__product-card__hotel-two-stars" style="display: none;">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                            <img class="main__content__product-card__star" src="src/img/star.svg" alt="">-->
+<!--                        </div>-->
+<!--                        <h3 class="main__content__product-card__category" style="display: none;">Apart</h3>-->
+<!--                        <h3 class="main__content__product-card__hotel-total-price">от 347 000 ₽</h3>-->
+<!--                        <p class="main__content__product-card__hotel-total-price-text">Цена за 7 ночей</p>-->
+<!--                        <button class="main__content__product-card__book">Выбрать</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="src/js/index.js"></script>
+</body>
+</html>

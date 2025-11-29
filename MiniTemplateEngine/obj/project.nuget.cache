@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rL8KDr3hQ0U=",
+  "success": true,
+  "projectFilePath": "/home/timofejr/MyProjects/ORIS_SEMESTROVKA/BACK/MiniHttpServer/MiniTemplateEngine/MiniTemplateEngine.csproj",
+  "expectedPackageFiles": [
+    "/home/timofejr/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

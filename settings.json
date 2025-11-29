@@ -1,0 +1,10 @@
+{
+  "StaticFilesPath": "Static/",
+  "Domain": "*",
+  "Port": "54321",
+  "EmailAddressFrom" : "timofejr064@gmail.com",
+  "EmailNameFrom" : "Timur Bogdalov",
+  "SmtpPort" : 587,
+  "SmtpHost" : "smtp.gmail.com",
+  "SmtpPassword" : "ulopihveaquozfor"
+}
